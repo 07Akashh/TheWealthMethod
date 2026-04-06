@@ -51,8 +51,8 @@ As this is a **fully functional demo**, the security layer is designed to be bot
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-repo/the-wealth-method.git
-    cd the-wealth-method
+    git clone https://github.com/07Akashh/TheWealthMethod.git
+    cd TheWealthMethod
     ```
 
 2.  **Install Dependencies**:
