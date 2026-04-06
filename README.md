@@ -72,8 +72,20 @@ As this is a **fully functional demo**, the security layer is designed to be bot
 
 ---
 
-## 🧪 Demo Data
-The application comes pre-packaged with **Seed Data** (Salary, Dividends, and common Expenses) so you can explore the analytics and vault features immediately without manual entry.
+## 🏗️ Technical Decisions and Trade-offs
+
+*   **Offline-First Architecture (SQLite)**: We prioritized absolute privacy and low latency. By using a local-only SQLite engine, data never leaves the user's device, eliminating the need for complex cloud sync while ensuring 100% responsiveness even without internet access.
+*   **TanStack Query + SQLite Service**: While SQLite is synchronous by nature, we wrapped it in an asynchronous service layer managed by TanStack Query. This allows for background data revalidation (e.g., currency rates) and automated cache invalidation, ensuring the UI is always synchronized with the database.
+*   **Zustand for UI State**: We chose Zustand for its minimal footprint and rapid performance compared to Redux, resulting in a streamlined global state for non-persistent UI flags like the "Confidentiality" mask.
+*   **Performance vs. Visuals**: To achieve 60fps animations on complex charts and dashboards while maintaining a standard React Native layout, we heavily utilized `React Native Reanimated` and `Memoization` (useMemo/useCallback) for layout-heavy calculations.
+
+---
+
+## 📝 Additional Notes
+
+*   **🔒 Demo Security Access**: For rapid testing and evaluation, the recommended **Default Testing PIN** is: **`1234`**. 
+*   **Data Integrity**: Upon first launch, the application automatically seeds the local database with sample transactions and goals to ensure the dashboard reflects a full "wealthy" state immediately.
+*   **Currency Defaults**: The system defaults to **INR (₹)** for all baseline wealth calculations. You can modify your preferred display currency and symbol at any time in the Profile settings.
 
 ---
 
